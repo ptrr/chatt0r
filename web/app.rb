@@ -4,7 +4,7 @@ require 'helpers'
 
 class App < Sinatra::Base
   include Helpers
-  ROOT = File.expand_path('./..', __FILE__)
+  ROOT = File.expand_path('../..', __FILE__)
   set :root, ROOT
 
   Compass.configuration do |config|
@@ -20,7 +20,9 @@ class App < Sinatra::Base
     content_type 'text/css', :charset => 'utf-8'
     sass :"stylesheets/application"
   end
+
+
   get '/' do
-    haml :index, :locals => {:host => '192.168.178.33'}
+    haml :index, :locals => {:host => '192.168.168.110'}
   end
 end

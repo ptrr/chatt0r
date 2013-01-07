@@ -9,19 +9,16 @@ require 'haml'
 require 'redis'
 require 'socket'
 require 'json'
-require './app'
+require 'app'
 
-require_relative 'lib/client'
-require_relative 'lib/message'
-require_relative 'lib/actions'
+require 'client'
+require 'message'
+require 'actions'
 
 $clients = []
 
-redis = Redis.new(:host => '127.0.0.1', :post => 6379)
-puts redis.methods.inspect
+redis = Redis.new(:host => '127.0.0.1', :port => 6379)
 EM.run do
-
-
   EM::WebSocket.start(:host => '0.0.0.0', :port => 3001) do |ws|
     client ||= nil
     ws.onmessage do |msg|
@@ -35,20 +32,15 @@ EM.run do
     end
 
     ws.onopen do
-      # When someone connects I want to add that socket to the $clients array that
-      # I instantiated above
       puts 'creating socket'
       client = Client.new(ws)
-      redis.subscribe'chat'
       $clients << client
       $clients.each do |client|
         client.socket.send "<div class='notice'>"+client.username+" has connected.</div>"
       end
-      puts $clients.inspect
     end
 
     ws.onclose do
-      # Upon the close of the connection I remove it from my list of running sockets
       puts 'closing socket'
       $clients.each do |client|
         client.socket.send "<div class='alert'>"+client.username+" has left.</div>"
@@ -56,9 +48,6 @@ EM.run do
       $clients.delete client
     end
   end
-
-  # You could also use Rainbows! instead of Thin.
-  # Any EM based Rack handler should do.
   Thin::Server.start App, '0.0.0.0', 3000
 end
 

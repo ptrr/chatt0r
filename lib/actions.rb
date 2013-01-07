@@ -1,3 +1,4 @@
+require 'message'
 class Actions
   def set_username client, username
     client.username = username
@@ -13,6 +14,6 @@ class Actions
   end
 
   def method_missing(meth, *args, &block)
-    return "No action"
+    Message.new.system_message("Command #{meth} does not exist.")
   end
 end

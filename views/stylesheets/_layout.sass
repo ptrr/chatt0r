@@ -3,7 +3,7 @@ body
   padding: 0
 
 .content
-  padding-right: $big-gap
+  margin-right: $small-gap
 
 .copyright
   padding: $small-gap
@@ -13,9 +13,10 @@ body
   .container
     width: $site-width
     margin: $big-gap auto
-    overflow: none
+    overflow: hidden
     background: $warm-gray
-    +border-radius(3px)     
+    +border-radius(0px)
+    +box-shadow(1px 1px 1px #999)
     padding: $small-gap
 
   .block, .sidebar, .copyright
@@ -36,6 +37,16 @@ body
   .copyright
     width: $main-width
     clear: both
+
+  .btn
+    padding: 4px 12px
+    margin-bottom: 0 // For input.btn
+    text-align: center
+    vertical-align: middle
+    cursor: pointer
+    background: $blue
+    +border-radius(3px)
+
 
 +small-screen
 

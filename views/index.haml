@@ -4,11 +4,11 @@
     %title Chatt0r  
     %script(type='text/javascript' src='/jquery-1.8.3.min.js')
     %link{:href=>'/stylesheet.css', :media => "screen", :rel => 'stylesheet', :type => "text/css"}
-    %script{:type => "text/javascript", :src => "http://code.jquery.com/jquery-1.5.min.js"}
     :javascript
       $(document).ready(function(){
 
         ws = new WebSocket("ws://#{host || 'localhost'}:3001");
+
         ws.onmessage = function(evt) { 
           $("#chat").append(evt.data);
           $("#chat").animate({ scrollTop: $(document).height() }, 0);
@@ -21,14 +21,21 @@
         $("#chat").height("500px");
       });    
   %body
+    %section.navbar
+      .navbar-inner
+        .container-fluid
+          %a.brand Chatt0r
+
     .container
       .header 
         %h1 Chatt0r
-      .block 
+      .block
         %section.content#chat
         %form(id='user_input' class='form-inline')
           %input(type='text' id='user_msg')
           %input(type='submit' name='submit' id='submit' class='btn btn-primary')
-      %aside.clear
+        .clear
+      %aside
+        %p Use '/set_username <username> to change your username.
         %h5 Clients connected
-      
+      .clear
