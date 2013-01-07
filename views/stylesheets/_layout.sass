@@ -1,0 +1,48 @@
+body
+  margin: 0
+  padding: 0
+
+.content
+  padding-right: $big-gap
+
+.copyright
+  padding: $small-gap
+
++big-screen
+
+  .container
+    width: $site-width
+    margin: $big-gap auto
+    overflow: none
+    background: $warm-gray
+    +border-radius(3px)     
+    padding: $small-gap
+
+  .block, .sidebar, .copyright
+    +box-sizing(border-box)
+
+  .block
+    width: $main-width
+    float: left
+
+  .about
+    clear: both
+    margin-bottom: 3em
+
+  .blog
+    clear: both
+    margin-bottom: 3em
+
+  .copyright
+    width: $main-width
+    clear: both
+
++small-screen
+
+  .container
+    margin: $small-gap
+
+  .sidebar
+    padding: 8px 20px
+    h3
+      margin: 0

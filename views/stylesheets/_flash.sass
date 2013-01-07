@@ -1,0 +1,25 @@
+.flash
+  font-family: $sans
+  color: $black
+  padding: $small-gap / 2
+  font-size: 11px
+  em
+    text-decoration: underline
+
+.notice
+  @extend .flash
+  background: mix(#ffcc00, #fff, 10%)
+  border-bottom: 1px solid mix(#ffcc00, #fff, 40%)
+
+.alert
+  @extend .flash
+  background: mix(#cc0000, #fff, 10%)
+  border-bottom: 1px solid mix(#cc0000, #fff, 40%)
+
+.message
+  @extend .flash
+  background: mix($warm-gray, $light-gray, 20%)
+  clear: both
+  border-bottom: 1px solid mix($blue, #fff, 40%)    
+  clear:both
+

@@ -1,0 +1,118 @@
+body
+  background: $light-gray
+  background-size: cover
+  background-attachment: fixed
+  font-size: 100%
+  line-height: 1.5em
+  border-top: solid $blue 0.3em
+
+.section_separator
+  position: relative
+  overflow: hidden
+  font-size: 1.30pxem
+  line-height: 1.143em
+  margin: 0 0 1.524em 0
+  text-align: center
+  text-transform: lowercase
+
+.section_separator a, .section_separator span 
+  display: inline-block
+  position: relative
+  z-index: 1
+  background-color: $light-gray
+  text-decoration: none
+  padding: 0 10px
+
+.section_separator::before, .section_separator .before
+  font-family: sans-serif
+  position: absolute
+  top: 0
+  color: #666!important
+  left: 0px
+  z-index: -1
+  overflow: visible
+  text-decoration: none !important
+  color: #111
+  text-transform: lowercase
+  letter-spacing: -1px
+  content: "\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB\30FB"
+  font-size: 5px
+
+
+
+h1
+  font-size: 30px
+  line-height: 1.5em
+
+h2
+  font-size: 24px
+  line-height: 1.5em
+  margin: 0 0 $small-gap 0
+  a
+    +link-colors($black, $blue)
+
+h3
+  font-size: 20px
+  line-height: 1.5em
+  text-align: center
+  margin: 0 0 $small-gap 0
+  a
+    +link-colors($black, $blue)
+
+h1, h2, h3, h4, h5, h6
+  margin: 1.5em 0 0.5em 0
+  padding: 0
+  color: $black
+  font-family: $heading
+
+p
+  color: $black
+  margin: 0 0 0.5em 0
+  font-size: 1.1em
+  line-height: 1.8em
+  text-align: justify
+  font-family: $sans
+  a
+    text-decoration: underline
+
+a
+  +link-colors($black, $blue)
+  +hover-link
+
+strong
+  font-weight: bold
+  color: $black
+
+hr
+  border: 0 none
+  border-bottom: $sidebar-border
+
+img
+  border: 3px solid $black
+  max-width: 100%
+  display: block
+
+  &.left
+    display: block
+    float: left
+
+  &.right
+    display: block
+    float: right
+
+  &.wrap
+    display: inline 
+
++small-screen
+  body
+    font-size: 1em
+
+  h1
+    font-size: 20px
+  h2
+    font-size: 15px
+
+  p
+    text-indent: 0
+    padding-bottom: 1em
+    font-size: 110%
