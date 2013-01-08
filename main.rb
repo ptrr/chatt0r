@@ -22,7 +22,7 @@ EM.run do
   EM::WebSocket.start(:host => '0.0.0.0', :port => 3001) do |ws|
     client ||= nil
     ws.onmessage do |msg|
-      msg = Message.new.parse(client, msg)
+      msg = Message.parse(client, msg)
       ws.send(msg)
       $clients.each do |client|
         if ws != client.socket

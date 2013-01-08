@@ -1,22 +1,16 @@
 require_relative 'client'
 require_relative 'actions'
 require 'cgi'
+
 class Message
   attr_accessor :client, :content
-  def parse client, content
-    return format(client, content) unless is_action?(content.split(" ").first)
-    action, content = to_action content
-    return Actions.new.send(action, client, content)
-  end
 
-  def to_action content
-    action = content.split(" ").shift
-    content = content.gsub(action, '') || ''
-    [action.gsub('/', ''), content]
-  end
-
-  def is_action? content
-    content =~ /\/\w+/
+  def self.parse(client, content)
+    if Actions.is_action?(content)
+      return Actions.parse(content, client)
+    else
+      return new.format(client, content) 
+    end
   end
 
   def system_message content
