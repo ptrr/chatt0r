@@ -16,12 +16,12 @@ class Message
   end
 
   def is_action? content
-    content =~ /\/\w+/
+    content =~ /^\/\w+/
   end
 
   def system_message content
     content = CGI.escapeHTML(content)
-    "<div class='notice'><div class='clear'><div class='message_content'>"+content+"</div></div></div>"
+    "<div class='alert-box warning'><div class='clear'><div class='message_content'>"+content+"</div></div></div>"
   end
 
   def format client, content

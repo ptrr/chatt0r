@@ -7,7 +7,7 @@
     :javascript
       $(document).ready(function(){
 
-        ws = new WebSocket("ws://#{host || 'localhost'}:3001");
+        ws = new WebSocket("ws://#{'localhost'}:3001");
 
         ws.onmessage = function(evt) { 
           $("#chat").append(evt.data);
@@ -21,21 +21,106 @@
         $("#chat").height("500px");
       });    
   %body
-    %section.navbar
-      .navbar-inner
-        .container-fluid
-          %a.brand Chatt0r
 
-    .container
-      .header 
-        %h1 Chatt0r
-      .block
-        %section.content#chat
+    %nav.top-bar
+      %ul
+        / Title Area
+        %li.name
+          %h1
+            %a{:href => "#"}
+              Top Bar Title
+        %li.toggle-topbar
+          %a{:href => "#"}
+      %section
+        / Left Nav Section
+        %ul.left
+          %li.divider
+          %li.has-dropdown
+            %a.active{:href => "#"} Item 1
+            %ul.dropdown
+              %li
+                %label Section Name
+              %li.has-dropdown
+                %a{:href => "#"} Level 1, Has Dropdown
+                %ul.dropdown
+                  %li
+                    %a{:href => "#"} Level 2
+                  %li
+                    %a{:href => "#"} Level 2
+                  %li.has-dropdown
+                    %a{:href => "#"} Level 2, Has Dropdown
+                    %ul.dropdown
+                      %li
+                        %label Section
+                      %li
+                        %a{:href => "#"} Level 3
+                      %li
+                        %a{:href => "#"} Level 3
+                      %li.divider
+                      %li
+                        %a{:href => "#"} Level 3
+                  %li
+                    %a{:href => "#"} Level 2
+                  %li
+                    %a{:href => "#"} Level 2
+              %li
+                %a{:href => "#"} Level 1
+              %li
+                %a{:href => "#"} Level 1
+              %li.divider
+              %li
+                %label Section Name
+              %li
+                %a{:href => "#"} Level 1
+              %li
+                %a{:href => "#"} Level 1
+              %li
+                %a{:href => "#"} Level 1
+              %li.divider
+              %li
+                %a{:href => "#"} See all &rarr;
+          %li.divider.hide-for-small
+        / Right Nav Section
+        %ul.right
+          %li.divider.show-for-medium-and-up
+          %li.has-dropdown
+            %a{:href => "#"} Item 2
+            %ul.dropdown
+              %li
+                %label Section Name
+              %li
+                %a{:href => "#"} Level 1
+              %li
+                %a{:href => "#"} Dropdown Option
+              %li
+                %a{:href => "#"} Dropdown Option
+              %li.divider
+              %li
+                %label Section Name
+              %li
+                %a{:href => "#"} Dropdown Option
+              %li
+                %a{:href => "#"} Dropdown Option
+              %li
+                %a{:href => "#"} Dropdown Option
+              %li.divider
+              %li
+                %a{:href => "#"} See all &rarr;
+
+    .row
+      .eight.columns
+        #chat
         %form(id='user_input' class='form-inline')
           %input(type='text' id='user_msg')
           %input(type='submit' name='submit' id='submit' class='btn btn-primary')
-        .clear
-      %aside
-        %p Use '/set_username <username> to change your username.
-        %h5 Clients connected
-      .clear
+      .four.columns
+        %h2 Clients
+  %script(type='text/javascript' src='/app.js')
+  %script(type='text/javascript' scr='/jquery-1.8.3.min.js')
+  %script(type='text/javascript' scr='/jquery.customforms.js')
+  %script(type='text/javascript' scr='/jquery.min.js')
+  %script(type='text/javascript' scr='/jquery.orbit-1.4.0.js')
+  %script(type='text/javascript' scr='/jquery.placeholder.min.js')
+  %script(type='text/javascript' scr='/jquery.reveal.js')
+  %script(type='text/javascript' scr='/jquery.tooltips.js')
+  %script(type='text/javascript' scr='/modernizr.foundation.js')
