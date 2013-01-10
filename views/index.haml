@@ -3,11 +3,12 @@
   %head  
     %title Chatt0r  
     %script(type='text/javascript' src='/jquery-1.8.3.min.js')
-    %link{:href=>'/stylesheet.css', :media => "screen", :rel => 'stylesheet', :type => "text/css"}
+    %link{:href=>'/application.css', :media => "screen", :rel => 'stylesheet', :type => "text/css"}
+    %script(type='text/javascript' scr='/modernizr.foundation.js')
     :javascript
       $(document).ready(function(){
 
-        ws = new WebSocket("ws://#{'localhost'}:3001");
+        ws = new WebSocket("ws://192.168.168.110:3001");
 
         ws.onmessage = function(evt) { 
           $("#chat").append(evt.data);
@@ -18,109 +19,25 @@
           ws.send($('#user_msg').val());
           $("#user_msg").val('');
         });
-        $("#chat").height("500px");
+        $("#chat").height($(window).height() - 200);
+        window.onresize = function(event) {
+        if ($(window).height() > 400){
+            $("#chat").height($(window).height() - 200);
+          }
+        }
       });    
   %body
-
     %nav.top-bar
-      %ul
-        / Title Area
-        %li.name
-          %h1
-            %a{:href => "#"}
-              Top Bar Title
-        %li.toggle-topbar
-          %a{:href => "#"}
-      %section
-        / Left Nav Section
-        %ul.left
-          %li.divider
-          %li.has-dropdown
-            %a.active{:href => "#"} Item 1
-            %ul.dropdown
-              %li
-                %label Section Name
-              %li.has-dropdown
-                %a{:href => "#"} Level 1, Has Dropdown
-                %ul.dropdown
-                  %li
-                    %a{:href => "#"} Level 2
-                  %li
-                    %a{:href => "#"} Level 2
-                  %li.has-dropdown
-                    %a{:href => "#"} Level 2, Has Dropdown
-                    %ul.dropdown
-                      %li
-                        %label Section
-                      %li
-                        %a{:href => "#"} Level 3
-                      %li
-                        %a{:href => "#"} Level 3
-                      %li.divider
-                      %li
-                        %a{:href => "#"} Level 3
-                  %li
-                    %a{:href => "#"} Level 2
-                  %li
-                    %a{:href => "#"} Level 2
-              %li
-                %a{:href => "#"} Level 1
-              %li
-                %a{:href => "#"} Level 1
-              %li.divider
-              %li
-                %label Section Name
-              %li
-                %a{:href => "#"} Level 1
-              %li
-                %a{:href => "#"} Level 1
-              %li
-                %a{:href => "#"} Level 1
-              %li.divider
-              %li
-                %a{:href => "#"} See all &rarr;
-          %li.divider.hide-for-small
-        / Right Nav Section
-        %ul.right
-          %li.divider.show-for-medium-and-up
-          %li.has-dropdown
-            %a{:href => "#"} Item 2
-            %ul.dropdown
-              %li
-                %label Section Name
-              %li
-                %a{:href => "#"} Level 1
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li.divider
-              %li
-                %label Section Name
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li
-                %a{:href => "#"} Dropdown Option
-              %li.divider
-              %li
-                %a{:href => "#"} See all &rarr;
-
-    .row
-      .eight.columns
-        #chat
+      .row-fluid
+        %ul
+          %li.name
+            %a Chatt0r
+    .row-fluid
+      %section.nine.columns
+        #chat.row-fluid
         %form(id='user_input' class='form-inline')
           %input(type='text' id='user_msg')
-          %input(type='submit' name='submit' id='submit' class='btn btn-primary')
-      .four.columns
-        %h2 Clients
-  %script(type='text/javascript' src='/app.js')
-  %script(type='text/javascript' scr='/jquery-1.8.3.min.js')
-  %script(type='text/javascript' scr='/jquery.customforms.js')
-  %script(type='text/javascript' scr='/jquery.min.js')
-  %script(type='text/javascript' scr='/jquery.orbit-1.4.0.js')
-  %script(type='text/javascript' scr='/jquery.placeholder.min.js')
-  %script(type='text/javascript' scr='/jquery.reveal.js')
-  %script(type='text/javascript' scr='/jquery.tooltips.js')
-  %script(type='text/javascript' scr='/modernizr.foundation.js')
+          %input(type='submit' name='submit' id='submit' class='button radius nice')
+      %aside.three.columns
+        %h2 Client
+

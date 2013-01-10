@@ -22,7 +22,7 @@ EM.run do
   EM::WebSocket.start(:host => '0.0.0.0', :port => 3001) do |ws|
     client ||= nil
     ws.onmessage do |msg|
-      msg = Message.new.parse(client, msg)
+      msg = Message.parse(client, msg)
       ws.send(msg)
       $clients.each do |client|
         if ws != client.socket
@@ -32,18 +32,20 @@ EM.run do
     end
 
     ws.onopen do
-      puts 'creating socket'
+
+
+      puts '[creating socket]'
       client = Client.new(ws)
       $clients << client
       $clients.each do |client|
-        client.socket.send "<div class='notice'>"+client.username+" has connected.</div>"
+        client.socket.send "<div class='twelve columns alert-box secondary'>"+client.username+" has connected.</div>"
       end
     end
 
     ws.onclose do
-      puts 'closing socket'
+      puts '[closing socket]'
       $clients.each do |client|
-        client.socket.send "<div class='alert'>"+client.username+" has left.</div>"
+        client.socket.send "<div class='twelve columns alert-box secondary'>"+client.username+" has left.</div>"
       end
       $clients.delete client
     end
